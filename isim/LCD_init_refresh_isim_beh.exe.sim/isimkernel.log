@@ -1,0 +1,10 @@
+Command line:
+   LCD_init_refresh_isim_beh.exe
+     -simmode  gui
+     -simrunnum  0
+     -socket  41751
+
+Thu Oct 26 18:00:09 2017
+
+
+ Elaboration Time: 0.06 sec

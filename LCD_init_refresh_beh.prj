@@ -1,0 +1,2 @@
+verilog work "LCD_init_refresh.v"
+verilog work "/opt/xilinx/ISE//verilog/src/glbl.v"

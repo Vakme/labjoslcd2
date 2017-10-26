@@ -1,0 +1,2 @@
+verilog isim_temp "LCD_init_refresh.v"
+verilog isim_temp "/opt/xilinx/ISE//verilog/src/glbl.v"
