@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "/home/lab_jos/4bielak/lcd/LCD_init_refresh_isim_beh.exe" -prj "/home/lab_jos/4bielak/lcd/LCD_init_refresh_beh.prj" "work.LCD_init_refresh" "work.glbl" 
+-intstyle "ise" -incremental -lib "unisims_ver" -lib "unimacro_ver" -lib "xilinxcorelib_ver" -o "/home/lab_jos/bielabra/lcd2/lcd/tb_LCD_controller_isim_beh.exe" -prj "/home/lab_jos/bielabra/lcd2/lcd/tb_LCD_controller_beh.prj" "work.tb_LCD_controller" "work.glbl" 

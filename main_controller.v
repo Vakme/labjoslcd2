@@ -22,19 +22,19 @@ module main_controller(
     input clk,
     input rst,
     input lcd_finish,
-    output reg_sel,
-    output mode,
-    output [1:0]lcd_cnt,
-    output lcd_enable,
-    output data_sel,
-    output DB_sel
+    output reg reg_sel,
+    output reg mode,
+    output reg [1:0]lcd_cnt,
+    output reg lcd_enable,
+    output reg data_sel,
+    output reg DB_sel
     );
 	 
 	 
 reg [2:0] state, next_state;
 	 
 localparam idle = 3'b0, init = 3'b001, addr = 3'b010, addr1 = 3'b011, ref = 3'b100, ref1 = 3'b101;	 
-	 
+localparam LCD_INIT = 1, LCD_REF = 0, INIT_CONST_NO = 4, REF_DATA_NO = 4;
 
 always @(posedge clk, posedge rst)
 	if(rst)
@@ -86,7 +86,7 @@ begin
 				reg_sel=1'b1;
 				mode=LCD_REF;
 				lcd_enable=1'b1;
-				next_state = ref11;
+				next_state = ref1;
 			end
 		ref1:
 			begin
@@ -104,6 +104,7 @@ begin
 				else
 					next_state = ref1;
 			end
+		endcase
 end
 
 

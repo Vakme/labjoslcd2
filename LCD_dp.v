@@ -27,7 +27,7 @@ module LCD_dp(
     input [1:0]mux_sel,
     input data_sel,
     input DB_sel,
-    output reg [7:0]DB_out
+    output [7:0]DB_out
     );
 	 
 	 reg [3:0] counter_mux;
@@ -61,7 +61,7 @@ module LCD_dp(
 			endcase
 		end
 		
-	reg [7:0] data_outx;	
+	wire [7:0] data_outx;	
 	assign data_outx = data_sel ? {4'b0011, counter_mux} : {2'b00, init_reset_mux};
 		
 	assign DB_out = DB_sel ? data_outx : 8'hcc;

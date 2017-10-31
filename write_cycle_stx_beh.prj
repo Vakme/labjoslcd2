@@ -1,2 +1,0 @@
-verilog isim_temp "write_cycle.v"
-verilog isim_temp "/opt/xilinx/ISE//verilog/src/glbl.v"

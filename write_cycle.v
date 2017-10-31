@@ -21,9 +21,12 @@
 module write_cycle(
 	input clk,
 	input rst,
+	input reg_sel,
     input wr_enable,
     output reg wr_finish,
-    output reg E_out
+    output reg E_out,
+	output RW_out,
+    output RS_out
     );
 	 
 reg [1:0] state, next_state;
@@ -41,10 +44,14 @@ always @* begin
 			
 	case(state)
 		idle: // idle
-			if(wr_enable)
-				next_state = init;
-			else
-				next_state = idle;
+			begin
+				wr_finish <= 1'b0;
+				E_out <= 1'b0;
+				if(wr_enable)
+					next_state = init;
+				else
+					next_state = idle;
+			end
 		init: // init
 			begin
 				E_out <= 1'b1;
@@ -58,10 +65,12 @@ always @* begin
 		endwr: // endwr
 			begin
 				wr_finish <= 1'b1;
-				state <= idle;
+				next_state <= idle;
 			end
 	endcase
 end
-	
+
+assign RS_out = reg_sel;
+assign RW_out = 1'b0;
 
 endmodule

@@ -71,6 +71,7 @@ always @*
 begin
 	wr_enable = 1'b0;
 	lcd_finish = 1'b0;
+	next_state = idle;
 	case(state)
 		idle:
 			begin

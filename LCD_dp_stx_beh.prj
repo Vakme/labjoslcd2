@@ -1,2 +1,0 @@
-verilog isim_temp "LCD_dp.v"
-verilog isim_temp "/opt/xilinx/ISE//verilog/src/glbl.v"
