@@ -26,7 +26,7 @@ module LCD_init_refresh(
     input [1:0] lcd_cnt,
     output reg lcd_finish,
     output reg wr_enable,
-    output reg wr_finish,
+    input wr_finish,
     output reg [1:0] mux_sel,
     output reg [1:0] init_sel
     );
