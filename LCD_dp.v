@@ -27,7 +27,7 @@ module LCD_dp(
     input [1:0]mux_sel,
     input data_sel,
     input DB_sel,
-    output [7:0]DB_out
+    output [7:0] DB_out
     );
 	 
 	 reg [3:0] counter_mux;

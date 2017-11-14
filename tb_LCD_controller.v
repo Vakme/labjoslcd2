@@ -63,10 +63,10 @@ module tb_LCD_controller;
 		#20 reset = 1'b0;
 	end
 	initial begin
-		#130 forever #10 clk_1ms = ~clk_1ms;
+		#130 forever #5 clk_1ms = ~clk_1ms;
 	end
 	
-	initial #500 $finish;
+	initial #1000 $finish;
       
 endmodule
 

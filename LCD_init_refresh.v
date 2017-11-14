@@ -48,8 +48,13 @@ always @(posedge clk, posedge rst)
 			if(rst)
 				init_sel <= 2'b0;
 			else case(state)
-					idle: if(mode) init_sel <= lcd_cnt;
-					endlcd: if(mode && init_sel != 2'b0) init_sel <= init_sel - 1;
+					idle: 
+						if(mode) 
+							init_sel <= lcd_cnt;
+					endlcd: 
+						if(mode)
+							if(init_sel != 2'b0)
+								init_sel <= init_sel - 1;
 				endcase
 		
 always @(posedge clk, posedge rst)
@@ -59,13 +64,10 @@ always @(posedge clk, posedge rst)
 					idle: 
 						if(!mode) 
 							mux_sel <= lcd_cnt;
-						else
-							lcd_finish <= 1;
 					endlcd: 
-						if(!mode && mux_sel != 2'b0) 
-							mux_sel <= mux_sel - 1;
-						else
-							lcd_finish <= 1'b1;
+						if(!mode)
+							if(mux_sel != 2'b0)
+								mux_sel <= mux_sel - 1;
 				endcase
 always @*
 begin
@@ -95,7 +97,20 @@ begin
 					next_state = data1;
 			end
 		endlcd:
-			next_state = idle;
+			begin
+				if(mode == 0 && mux_sel == 2'b0)
+					begin
+						lcd_finish = 1'b1;
+						next_state = idle;
+					end
+				else if(mode == 1 && init_sel == 2'b0)
+					begin
+						lcd_finish = 1'b1;
+						next_state = idle;
+					end
+				else
+					next_state = data;
+			end
 	endcase
 end
 

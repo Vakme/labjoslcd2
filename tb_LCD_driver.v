@@ -30,13 +30,13 @@ module tb_LCD_driver;
 	reg [3:0]count2;
 	reg [3:0]count3;
 	reg reset;
-	reg clk_1ms;
+	reg clk;
 
 	// Outputs
 	wire E_out;
 	wire RW_out;
 	wire RS_out;
-	wire DB_out;
+	wire [7:0] DB_out;
 
 	// Instantiate the Unit Under Test (UUT)
 	LCD_driver uut (
@@ -45,7 +45,7 @@ module tb_LCD_driver;
 		.count2(count2), 
 		.count3(count3), 
 		.reset(reset), 
-		.clk_1ms(clk_1ms), 
+		.clk(clk), 
 		.E_out(E_out), 
 		.RW_out(RW_out), 
 		.RS_out(RS_out), 
@@ -53,16 +53,16 @@ module tb_LCD_driver;
 	);
 
 	initial begin
-		count0 = 0;
-		count1 = 0;
-		count2 = 0;
-		count3 = 0;
+		count0 = 4'd1;
+		count1 = 4'd2;
+		count2 = 4'd3;
+		count3 = 4'd4;
 	end
 	
 		initial begin
 		// Initialize Inputs
 		reset = 0;
-		clk_1ms = 0;
+		clk = 0;
 
 		// Wait 100 ns for global reset to finish
 		#100;
@@ -72,8 +72,8 @@ module tb_LCD_driver;
 		#20 reset = 1'b0;
 	end
 	initial begin
-		#130 forever #10 clk_1ms = ~clk_1ms;
+		#130 forever #5 clk = ~clk;
 	end
-      initial #500 $finish;
+      initial #1000 $finish;
 endmodule
 

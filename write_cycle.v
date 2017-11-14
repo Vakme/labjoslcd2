@@ -48,9 +48,9 @@ always @* begin
 				wr_finish <= 1'b0;
 				E_out <= 1'b0;
 				if(wr_enable)
-					next_state = init;
+					next_state <= init;
 				else
-					next_state = idle;
+					next_state <= idle;
 			end
 		init: // init
 			begin

@@ -60,6 +60,7 @@ begin
 					next_state = addr;
 				else
 					next_state = init;
+				mode=LCD_INIT;
 			end
 		addr:
 			begin
@@ -67,12 +68,14 @@ begin
 				lcd_cnt = 1'b0;
 				DB_sel = 1'b0;
 				next_state = addr1;
+				mode=LCD_INIT;
 			end
 		addr1:
 			begin
 				lcd_enable=1'b0;
 				lcd_cnt = 1'b0;
 				DB_sel = 1'b0;
+				mode=LCD_INIT;
 				if(lcd_finish)
 					next_state = ref;
 				else

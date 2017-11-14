@@ -1,0 +1,38 @@
+#Location Constraints on ug334 board
+#Sparta-3AN, Xilinx
+# On this board, VCCAUX is 3.3 volts.
+
+CONFIG VCCAUX = "3.3" ;
+
+# Configure SUSPEND mode options.
+ 
+CONFIG ENABLE_SUSPEND = "NO" ;
+
+# FILTERED is appropriate for use with the switch on this board. Other allowed
+# settings are NO or UNFILTERED.  If set NO, the AWAKE pin becomes general I/O.
+# Please read the FPGA User Guide for more information.
+
+# Configure POST_CRC options.
+
+CONFIG POST_CRC = "DISABLE" ;
+
+NET "clk"       LOC = "E12"  | IOSTANDARD = LVCMOS33 | PERIOD = 20.000 ;
+#OFFSET = IN  10.000 VALID 20.000 BEFORE "clk" ;
+#OFFSET = OUT 20.000 AFTER "clk" ;
+
+NET "reset"	LOC = "R13" | IOSTANDARD = LVCMOS33 | PULLDOWN ;
+#NET "in"	LOC = "T16" | IOSTANDARD = LVCMOS33 | PULLDOWN ;
+#Character LCD Screen
+NET "E_out" LOC = "AB4" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
+NET "RS_out" LOC = "Y14" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
+NET "RW_out" LOC = "W13" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
+NET "DB_out<7>" LOC = "Y15" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
+NET "DB_out<6>" LOC = "AB16" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
+NET "DB_out<5>" LOC = "Y16" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
+NET "DB_out<4>" LOC = "AA12" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
+NET "DB_out<3>" LOC = "AB12" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
+NET "DB_out<2>" LOC = "AB17" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
+NET "DB_out<1>" LOC = "AB18" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
+NET "DB_out<0>" LOC = "Y13" | IOSTANDARD = LVCMOS33 | DRIVE = 8 | SLEW = SLOW ;
+#
+#UG334 - Spartan-3AN
